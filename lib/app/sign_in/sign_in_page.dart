@@ -1,9 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:timer_tracker/app/sign_in/sign_in_button.dart';
 import 'package:timer_tracker/common_widgets/custom_elevated_button.dart';
 
+import 'social_sign_in_button.dart';
+
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
+
+  Future<void> _signInAnonymously() async {
+    try {
+      final userCredentials = await FirebaseAuth.instance.signInAnonymously();
+      if (userCredentials.user?.uid != null) {
+        print('${userCredentials.user!.uid}');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +46,44 @@ class SignInPage extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: 8.0),
-          SignInButton(
+          const SizedBox(height: 48.0),
+          SocialSignInButton(
+            assetName: 'images/google-logo.png',
             text: 'Sign in with Google',
-            textColor: Colors.black87,
+            textColor: Colors.black,
             color: Colors.white,
             onPressed: () {},
+          ),
+          const SizedBox(height: 8.0),
+          SocialSignInButton(
+            assetName: 'images/facebook-logo.png',
+            text: 'Sign in with Google',
+            textColor: Colors.white,
+            color: Color(0xFF334D92),
+            onPressed: () {},
+          ),
+          const SizedBox(height: 8.0),
+          SignInButton(
+            text: 'Sign in with email',
+            textColor: Colors.white,
+            color: Colors.teal[700],
+            onPressed: () {},
+          ),
+          const SizedBox(height: 8.0),
+          const Text(
+            'ok',
+            style: const TextStyle(
+              fontSize: 14.0,
+              color: Colors.black87,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8.0),
+          SignInButton(
+            text: 'Go anonymous',
+            textColor: Colors.black,
+            color: Colors.lime[300],
+            onPressed: _signInAnonymously,
           ),
         ],
       ),
