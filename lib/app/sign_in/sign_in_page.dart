@@ -42,7 +42,7 @@ class SignInPage extends StatelessWidget {
       MaterialPageRoute<void>(
         //will change slide in animation on ios
         fullscreenDialog: true,
-        builder: (context) => EmailSignInPage(),
+        builder: (context) => EmailSignInPage(auth: auth),
       ),
     );
   }
