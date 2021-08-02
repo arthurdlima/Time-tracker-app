@@ -30,7 +30,9 @@ class Auth implements AuthBase {
 
   @override
   Future<User?> signInWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     final userCredential = await _firebaseAuth.signInWithCredential(
       EmailAuthProvider.credential(
         email: email,
@@ -42,7 +44,9 @@ class Auth implements AuthBase {
 
   @override
   Future<User?> createUserWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
