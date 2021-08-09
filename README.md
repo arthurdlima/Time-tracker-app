@@ -1,4 +1,4 @@
 # timer_tracker
 
-Flutter app with BLoC Pattern, Facebook and Google authentication and more.
+Flutter app with provider, Facebook and Google authentication and more.
 
