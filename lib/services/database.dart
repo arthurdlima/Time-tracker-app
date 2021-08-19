@@ -30,7 +30,6 @@ class FirestoreDatabase implements Database {
         path: APIPath.job(uid, 'job_abc'),
         data: job.toMap(),
       );
-  //testing
 
   void readJobs() {
     final path = APIPath.jobs(uid);
